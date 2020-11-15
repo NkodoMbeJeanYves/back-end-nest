@@ -7,7 +7,19 @@ import { VideoModule } from './video/video.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(
+      {
+        "type": "mysql",
+        "host": "localhost",
+         port: 3306,
+        "username": "root",
+        "password": "",
+        "database": "nestjs",
+        "synchronize": false,
+        "logging": true,
+        "entities": ["src/**/*.entity.ts", "dist/**/*entity.ts"]
+      }
+    ),
     EventModule,
     VideoModule],
   controllers: [AppController],
